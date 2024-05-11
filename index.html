@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resizable Layout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="component" id="component1">
+      <h2>Component 1</h2>
+      <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+      <p>This is the content of component 1.</p>
+    </div>
+    <div class="component" id="component2">
+      <h2>Component 2</h2>
+      <p>This is the content of component 2.</p>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </div>
+    <div class="component" id="component3">
+      <h2>Component 3</h2>
+      <p>This is the content of component 3.</p>
+      <div class="nested-content">
+        <p>Nested content inside Component 3</p>
+        <button>Click Me</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.11/interact.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
