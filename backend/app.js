@@ -50,7 +50,7 @@ app.get('/api/all-data', async (req, res) => {
 app.get('/api/count', async (req, res) => {
     try {
         const counts = await Count.find();
-        res.status(200).json({ success: true, Counts });
+        res.status(200).json({ success: true, counts });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ success: false, error: 'Server error'  });
@@ -60,9 +60,9 @@ app.get('/api/count', async (req, res) => {
 
 
 //  connect the frontend and return statics build frontend file
-app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.use(express.static(path.join(__dirname, '../clint/build')))
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+    res.sendFile(path.resolve(__dirname, '../clint/build/index.html'))
 })
 
 // for 404 routes  Errors 
