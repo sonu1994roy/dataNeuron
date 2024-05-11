@@ -36,8 +36,8 @@
 - Provides the count of how many times users have called the add and update APIs.
 
 **Execution Time:**
-- Add/Edit Data API execution time: (Mention execution time here).
-- Count API execution time: (Mention execution time here).
+- Add/Edit Data API execution time: (1.2 s).
+- Count API execution time: (300-400 ms).
 
 **Table/Collection for Database:**
 - Utilized MongoDB database with two collections: Data and Count.
