@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const DB_URI = 'mongodb+srv://gnoindeveloper:glofaa1234@cluster0.m55jsrs.mongodb.net/dataNeuron'
+const DB_URI = 'mongodb+srv://gnoindeveloper:glofaa1234@cluster0.m55jsrs.mongodb.net/dataNeuronTask'
 
 const databaseConnections = () => {
     mongoose.connect(DB_URI, {

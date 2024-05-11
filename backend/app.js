@@ -13,9 +13,17 @@ app.use(express.urlencoded({ extended: true }));
 
 // API to add or update data
 app.post('/api/data', async (req, res) => {
-    const { id, textData } = req.body;
+    const {textData } = req.body;
+    const id =req.query.id
     try {
         let data;
+
+        // Check if Count document exists, if not, create it
+        let countDocument = await Count.findOne();
+        if (!countDocument) {
+            countDocument = new Count({});
+            await countDocument.save();
+        }
         if (id) {
             // If ID is provided, update existing data
             data = await Data.findByIdAndUpdate(id, { textData }, { new: true });
@@ -25,9 +33,9 @@ app.post('/api/data', async (req, res) => {
             // If no ID, create new data entry
             data = new Data({ textData });
             await data.save();
-            // Increment add count
             await Count.findOneAndUpdate({}, { $inc: { addCount: 1 } });
         }
+
         res.status(200).json({ success: true, message: 'successfully', data });
     } catch (error) {
         console.error('Error:', error);
@@ -35,25 +43,26 @@ app.post('/api/data', async (req, res) => {
     }
 });
 
+
 // API to get all data list
 app.get('/api/all-data', async (req, res) => {
     try {
         const data = await Data.find();
-        res.status(200).json({ success: true,  data });
+        res.status(200).json({ success: true, data });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ success: false, error: 'Server error'  });
+        res.status(500).json({ success: false, error: 'Server error' });
     }
 });
 
 // API to get count of add and update calls
 app.get('/api/count', async (req, res) => {
     try {
-        const counts = await Count.find();
+        const counts = await Count.findOne({});
         res.status(200).json({ success: true, counts });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ success: false, error: 'Server error'  });
+        res.status(500).json({ success: false, error: 'Server error' });
     }
 });
 
