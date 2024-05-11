@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
-// const { errorMiddleware } = require('expressive-error-handler');
+
 
 const { Data, Count } = require('./modal')
 
@@ -70,8 +70,7 @@ app.use(function (req, res) {
     res.status(404).json({ error: "Route not found" });
 });
 
-// Middleware for Errors
-// app.use(errorMiddleware);
+
 
 module.exports = app
 
